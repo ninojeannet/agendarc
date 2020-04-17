@@ -7,9 +7,11 @@ import javax.annotation.PostConstruct;
 
 import com.hearc.agendarc.model.Calendar;
 import com.hearc.agendarc.model.Event;
+import com.hearc.agendarc.model.Role;
 import com.hearc.agendarc.model.User;
 import com.hearc.agendarc.repository.CalendarRepository;
 import com.hearc.agendarc.repository.EventRepository;
+import com.hearc.agendarc.repository.RoleRepository;
 import com.hearc.agendarc.repository.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,15 +32,31 @@ public class AppConfig {
     
         
 	@Autowired
-	EventRepository eventRepository;
+    EventRepository eventRepository;
+    
+    @Autowired
+	RoleRepository roleRepository;
 	
 	@PostConstruct
 	public void init() {
+        final Role r = new Role();
+        r.setName("ROLE_ADMIN");
+        roleRepository.save(r);
+        
+        final Role r1 = new Role();
+        r1.setName("ROLE_ORGANIZER");
+        roleRepository.save(r1);
+
+        final Role r2 = new Role();
+        r2.setName("ROLE_VISITOR");
+        roleRepository.save(r2);
+
         final User u = new User();
         u.setName("dave");
         u.setSurname("Silva");
         u.setUsername("dave");
         u.setPwd((bCryptPasswordEncoder.encode("test")));
+        u.addRole(r);
         userRepository.save(u);
 
         final Calendar c = new Calendar();

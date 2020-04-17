@@ -1,5 +1,6 @@
 package com.hearc.agendarc.model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -86,8 +87,19 @@ public class User {
 		this.roles = roles;
 	}
 
+	public void addRole(Role role)
+	{
+		this.roles.add(role);
+	}
+	public void removeRole(Role role)
+	{
+		this.roles.remove(role);
+	}
+
 	public User() {
 		super();
+		this.roles = new HashSet<Role>();
+		
 	}
 
 }
