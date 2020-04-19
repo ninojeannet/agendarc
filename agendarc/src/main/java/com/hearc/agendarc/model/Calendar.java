@@ -22,7 +22,6 @@ public class Calendar {
 
     private String name;
 
-    @JsonIgnore
     @ManyToOne
     private User owner;
 

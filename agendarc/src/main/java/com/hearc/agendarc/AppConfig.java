@@ -92,8 +92,8 @@ public class AppConfig {
         e1.setDescription("Match des 8emes de finale");
         eventRepository.save(e1);
         
-        start = LocalDateTime.of(2020, 4, 10, 10, 0, 0);
-        stop = LocalDateTime.of(2020, 4, 10, 11, 0, 0);
+        start = LocalDateTime.of(2020, 4, 10, 15, 0, 0);
+        stop = LocalDateTime.of(2020, 4, 10, 15, 0, 0);
 
         final Event e2 = new Event();
         e2.setTitle("France-Allemagne");

@@ -42,7 +42,7 @@ public class EventController{
 	}
  
 	@RequestMapping("/createEvent")
-    public String register(Model model, Principal principal) 
+    public String create(Model model, Principal principal) 
 	{
 		model.addAttribute("event", new Event());
 		User user = userRepository.findByUsername(principal.getName());
@@ -56,11 +56,12 @@ public class EventController{
 	}
 
 	@PostMapping("/createEvent")
-	public String newCalendar(@ModelAttribute ("event") Event event,@ModelAttribute ("selectedcalendar") Calendar selectedcalendar, Principal principal) {
+	public String save(@ModelAttribute ("event") Event event,@ModelAttribute ("selectedcalendar") Calendar selectedcalendar, Principal principal) {
 		User user = userRepository.findByUsername(principal.getName());
 		event.setCreator(user);
 		Calendar calendar = calendarRepository.findById(selectedcalendar.getId()).get();
 		event.setCalendar(calendar);
+		
 		eventRepository.save(event);
 
 		return "redirect:/";
