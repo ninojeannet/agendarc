@@ -1,3 +1,4 @@
+<html th:replace="~{base :: layout( ~{::content})}">
 <link
 	href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
 	rel="stylesheet" id="bootstrap-css">
@@ -9,6 +10,8 @@
 <link
 	href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"
 	rel="stylesheet">
+<div th:fragment="content">
+
 <div class="container">
 	<div class="row">
 		<div class="col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6">
@@ -25,7 +28,7 @@
 							<p>Vous participez actuellement à <span th:text="${number}">[]</span> calendriers/événements</p>
 							<p>Liste de vos calendriers/événements</p>
 							<ul th:each="calendar : ${calendars}">
-								<il th:text="${calendar.name}"></il>
+								<td><a th:href="@{/calendar/} + '?id=' + ${calendar.id}" th:text="${calendar.name}"></a></td>
 							</ul>
 						</div>
 					</div>
@@ -34,4 +37,5 @@
 			</div>
 		</div>
 	</div>
+</div>
 </div>

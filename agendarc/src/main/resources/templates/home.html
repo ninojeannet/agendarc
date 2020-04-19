@@ -3,20 +3,4 @@
 <div th:fragment="content">
     <H1>Bienvenue sur Agend'Arc</H1>
 
-    <!--  **************** logout ****************** -->
-    <div th:fragment="logout" class="logout" sec:authorize="isAuthenticated()"> 
-                Utilisateur: <span sec:authentication="name">[]</span>
-
-        <div>
-            <form action="#" th:action="@{/logout}" method="post"> 
-                <input type="submit" value="Logout" />
-            </form>
-        </div>
-    </div>
-    
-        <div>
-        <form action="#" th:action="@{/profile}" method="post"> 
-            <input type="submit" value="profile" />
-        </form>
-    </div>
 </div>

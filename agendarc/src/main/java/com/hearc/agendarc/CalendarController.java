@@ -111,7 +111,7 @@ public class CalendarController{
 		userService.updateRoles(user);
 
 		
-		return "redirect:/";
+		return "redirect:/calendars";
 	}
 
 	@RequestMapping(value="/updateCalendar",method=RequestMethod.GET)
