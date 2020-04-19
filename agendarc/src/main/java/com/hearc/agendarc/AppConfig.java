@@ -40,7 +40,7 @@ public class AppConfig {
 	@PostConstruct
 	public void init() {
 
-    
+    /*
         final Role r4 = new Role();
         r4.setName("ROLE_ADMIN_1");
         roleRepository.save(r4);
@@ -97,6 +97,7 @@ public class AppConfig {
         e2.setCalendar(c);
         e2.setDescription("Match de poule");
         eventRepository.save(e2);
+        */
 /*
         final Event e3 = new Event();
         e3.setName("Serbie-Albanie");
