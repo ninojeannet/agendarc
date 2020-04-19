@@ -28,4 +28,10 @@
       <isRun>true</isRun>
       <testCaseId>Test Cases/logout</testCaseId>
    </testCaseLink>
+   <testCaseLink>
+      <guid>9bcbcddf-587f-4214-88a3-2e5b27405d40</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/createCalendar</testCaseId>
+   </testCaseLink>
 </TestSuiteEntity>
