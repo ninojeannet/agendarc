@@ -7,9 +7,10 @@
     <form th:action="@{/updateCalendar}" action="#" th:object="${calendar}" method="post">
         <input type="hidden" th:value="${calendar.id}" th:field="*{id}"/>
         <input type="hidden" th:value="${calendar.roleName}" th:field="*{roleName}"/>
-    Owner :<input type="hidden"  th:value="${calendar.owner}" th:field="*{owner}"/>
-    	<p>Name: <input type="text"  th:value="${calendar.name}"th:field="*{name}" /></p>
+        <input type="hidden"  th:value="${calendar.owner}" th:field="*{owner}"/>
+    	<p>Old name: <input type="text" disabled  th:value="${calendar.name}" /></p>
+    	<p>New name: <input type="text"  th:value="${calendar.name}"th:field="*{name}" /></p>
         
-        <p><input type="submit" value="Modifier" /></p>
+        <p><input class="btn btn-success" type="submit" value="Modifier" /></p>
     </form>
 </div>
