@@ -6,6 +6,7 @@
 
     <form th:action="@{/updateCalendar}" action="#" th:object="${calendar}" method="post">
         <input type="hidden" th:value="${calendar.id}" th:field="*{id}"/>
+        <input type="hidden" th:value="${calendar.roleName}" th:field="*{roleName}"/>
     Owner :<input type="hidden"  th:value="${calendar.owner}" th:field="*{owner}"/>
     	<p>Name: <input type="text"  th:value="${calendar.name}"th:field="*{name}" /></p>
         
