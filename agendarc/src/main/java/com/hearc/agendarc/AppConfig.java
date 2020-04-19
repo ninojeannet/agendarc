@@ -43,6 +43,13 @@ public class AppConfig {
         r.setName("ROLE_ADMIN");
         roleRepository.save(r);
         
+        final Role r4 = new Role();
+        r4.setName("ROLE_ADMIN_1");
+        roleRepository.save(r4);
+
+        final Role r5 = new Role();
+        r5.setName("ROLE_ADMIN_2");
+        roleRepository.save(r5);
         final Role r1 = new Role();
         r1.setName("ROLE_ORGANIZER");
         roleRepository.save(r1);
@@ -56,17 +63,20 @@ public class AppConfig {
         u.setSurname("Silva");
         u.setUsername("dave");
         u.setPwd((bCryptPasswordEncoder.encode("test")));
-        u.addRole(r);
+        u.addRole(r4);
+        u.addRole(r5);
         userRepository.save(u);
 
         final Calendar c = new Calendar();
         c.setName("Euro 2020");
         c.setOwner(u);
+        c.setRoleName("ROLE_ADMIN_1");
         calendarRepository.save(c);
 
         final Calendar c1 = new Calendar();
         c1.setName("JO Tokyo");
         c1.setOwner(u);
+        c1.setRoleName("ROLE_ADMIN_2");
         calendarRepository.save(c1);
 
     

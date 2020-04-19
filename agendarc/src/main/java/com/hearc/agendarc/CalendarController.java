@@ -5,9 +5,11 @@ import java.util.List;
 
 import com.hearc.agendarc.model.Calendar;
 import com.hearc.agendarc.model.Event;
+import com.hearc.agendarc.model.Role;
 import com.hearc.agendarc.model.User;
 import com.hearc.agendarc.repository.CalendarRepository;
 import com.hearc.agendarc.repository.EventRepository;
+import com.hearc.agendarc.repository.RoleRepository;
 import com.hearc.agendarc.repository.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +44,9 @@ public class CalendarController{
 	
 	@Autowired
 	CalendarService calendarService;
+
+	@Autowired
+	RoleRepository roleRepository;
 
     @RequestMapping(value="/", method=RequestMethod.GET)
     public String test() {
@@ -90,9 +95,22 @@ public class CalendarController{
 		User user = userRepository.findByUsername(principal.getName());
 
 		calendar.setOwner(user);
-
 		calendarRepository.save(calendar);
 
+		final Role r = new Role();
+        r.setName("ROLE_ADMIN_"+calendar.getId());
+		roleRepository.save(r);
+
+		user.addRole(r);
+		userRepository.save(user);
+
+		calendar.setRoleName(r.getName());
+		calendarRepository.save(calendar);
+
+
+		userService.updateRoles(user);
+
+		
 		return "redirect:/";
 	}
 

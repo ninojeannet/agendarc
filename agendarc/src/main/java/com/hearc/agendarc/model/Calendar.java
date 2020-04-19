@@ -10,6 +10,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "calendar")
 public class Calendar {
@@ -20,11 +22,15 @@ public class Calendar {
 
     private String name;
 
+    @JsonIgnore
     @ManyToOne
     private User owner;
 
+    @JsonIgnore
     @ManyToMany
     private Set<User> users;
+
+    private String roleName;
     
     public Calendar() {
     }
@@ -43,6 +49,14 @@ public class Calendar {
 
 	public void setName(String name) {
 		this.name = name;
+    }
+    
+    public String getRoleName() {
+		return roleName;
+	}
+
+	public void setRoleName(String role) {
+		this.roleName = role;
 	}
 
     public User getOwner()
