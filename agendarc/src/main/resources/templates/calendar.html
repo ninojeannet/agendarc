@@ -81,10 +81,10 @@
 	<h1 th:text="${calendar.name}">Calendrier</h1>
 		<div>
 			<p>Created by <span th:text="${calendar.owner.username}"></span> </p>
-			<td><a th:if="${#authorization.expression('hasAnyRole('''+calendar.roleName+''')')}" th:href="@{/deleteCal} + '?id=' + ${calendar.id}" >Delete</a></td>
-			<td><a th:if="${#authorization.expression('hasRole('''+calendar.roleName+''')')}" th:href="@{/updateCalendar}+ '?id=' + ${calendar.id}" >Update</a></td>
-			<td><a th:if="${#authorization.expression('hasRole('''+calendar.roleName+''')')}" th:href="@{/createEvent}" >Create new event</a></td>
-			
+			<td><a class="btn btn-primary" th:if="${#authorization.expression('hasRole('''+calendar.roleName+''')')}" th:href="@{/updateCalendar}+ '?id=' + ${calendar.id}" >Update name</a></td>
+			<td><a class="btn btn-success" th:if="${#authorization.expression('hasRole('''+calendar.roleName+''')')}" th:href="@{/createEvent}" >Create new event</a></td>
+			<td><a class="btn btn-danger" th:if="${#authorization.expression('hasAnyRole('''+calendar.roleName+''')')}" th:href="@{/deleteCal} + '?id=' + ${calendar.id}" >Delete</a></td>
+
 			<ul th:each=" user : ${calendar.users}">
 				<li th:text="${user.username}"></li>
 			</ul>
