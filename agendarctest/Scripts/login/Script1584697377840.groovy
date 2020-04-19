@@ -26,5 +26,3 @@ WebUI.click(findTestObject('page_login/button_submit'))
 
 WebUI.verifyElementPresent(findTestObject('button_logout'), 0)
 
-WebUI.closeBrowser()
-
