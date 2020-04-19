@@ -21,5 +21,5 @@ WebUI.setText(findTestObject('page_create_calendar/input_name'), 'monCalendrier'
 
 WebUI.click(findTestObject('page_create_calendar/btn_submit'))
 
-WebUI.verifyTextPresent('Bienvenue', false)
+WebUI.verifyTextPresent('Calendriers', false)
 

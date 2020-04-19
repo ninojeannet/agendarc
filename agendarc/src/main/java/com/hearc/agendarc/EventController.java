@@ -65,7 +65,7 @@ public class EventController{
 		
 		eventRepository.save(event);
 
-		return "redirect:/";
+		return "redirect:/calendar?id="+calendar.getId();
 	}
 
 	
