@@ -39,10 +39,8 @@ public class AppConfig {
 	
 	@PostConstruct
 	public void init() {
-        final Role r = new Role();
-        r.setName("ROLE_ADMIN");
-        roleRepository.save(r);
-        
+
+    
         final Role r4 = new Role();
         r4.setName("ROLE_ADMIN_1");
         roleRepository.save(r4);
@@ -50,9 +48,7 @@ public class AppConfig {
         final Role r5 = new Role();
         r5.setName("ROLE_ADMIN_2");
         roleRepository.save(r5);
-        final Role r1 = new Role();
-        r1.setName("ROLE_ORGANIZER");
-        roleRepository.save(r1);
+
 
         final Role r2 = new Role();
         r2.setName("ROLE_VISITOR");
@@ -87,18 +83,17 @@ public class AppConfig {
         e1.setTitle("Suisse-Italie");
         //e1.setDate(localDate);
         e1.setStart(start);
-        e1.setFinish(stop);
+        e1.setEnd(stop);
         e1.setCalendar(c);
         e1.setDescription("Match des 8emes de finale");
         eventRepository.save(e1);
         
         start = LocalDateTime.of(2020, 4, 10, 15, 0, 0);
-        stop = LocalDateTime.of(2020, 4, 10, 15, 0, 0);
-
+        stop = LocalDateTime.of(2020, 4, 11, 15, 0, 0);
         final Event e2 = new Event();
         e2.setTitle("France-Allemagne");
         e2.setStart(start);
-        e2.setFinish(stop);
+        e2.setEnd(stop);
         e2.setCalendar(c);
         e2.setDescription("Match de poule");
         eventRepository.save(e2);

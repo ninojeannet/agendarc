@@ -62,7 +62,7 @@ public class EventController{
 		Calendar calendar = calendarRepository.findById(selectedcalendar.getId()).get();
 		event.setCalendar(calendar);
 		event.setId(null);
-		System.out.println(event);
+		
 		eventRepository.save(event);
 
 		return "redirect:/";

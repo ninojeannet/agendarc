@@ -29,7 +29,7 @@
             <option th:each="cal : ${calendars}" th:value="${cal.id}" th:text="${cal.name}" ></option>
         </select>
         <input type="hidden" id="start" name="start" value="" th:field="${event.start}">
-        <input type="hidden" id="finish" name="finish" value="" th:field="${event.finish}">
+        <input type="hidden" id="finish" name="finish" value="" th:field="${event.end}">
 
         <p><input type="submit" value="Ajouter" /></p>
     </form>

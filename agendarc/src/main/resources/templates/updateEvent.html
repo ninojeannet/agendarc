@@ -23,13 +23,13 @@
     	<p>Nom de l'événement: <input type="text" th:value="${event.title}" th:field="*{title}" required/></p>
         <p>Date début: <input id="dateStart"  type="date" th:value="${#temporals.format(event.start, 'yyyy-MM-dd')}" onchange="updateStart()" required/></p>
         <p>Heure début: <input id="timeStart"type="time" th:value="${#temporals.format(event.start, 'HH:mm')}" onchange="updateStart()" required/></p>
-        <p>Date fin: <input id="dateFinish" type="date" th:value="${#temporals.format(event.finish, 'yyyy-MM-dd')}" onchange="updateFinish()" required/></p>
-        <p>Heure fin: <input id="timeFinish"  type="time" th:value="${#temporals.format(event.finish, 'HH:mm')}" onchange="updateFinish()" required/></p>
+        <p>Date fin: <input id="dateFinish" type="date" th:value="${#temporals.format(event.end, 'yyyy-MM-dd')}" onchange="updateFinish()" required/></p>
+        <p>Heure fin: <input id="timeFinish"  type="time" th:value="${#temporals.format(event.end, 'HH:mm')}" onchange="updateFinish()" required/></p>
     	<p>Détails : <input type="text" th:value="${event.description}" th:field="*{description}" required /></p>
         <input type="hidden" th:value="${event.id}" th:field="*{id}"/>
         <input type="hidden" th:value="${event.calendar}" th:field="*{calendar}"/>
         <input type="hidden" id="start" th:value="${event.start}" name="start" value="" th:field="*{start}">
-        <input type="hidden"  id="finish" th:value="${event.finish}" name="finish" value="" th:field="*{finish}">
+        <input type="hidden"  id="finish" th:value="${event.end}" name="finish" value="" th:field="*{end}">
 
         <p><input type="submit" value="Modifier" /></p>
     </form>

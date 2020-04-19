@@ -34,7 +34,7 @@ public class Event {
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime start;
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime finish;
+    private LocalDateTime end;
 
     private String description;
 
@@ -110,17 +110,17 @@ public class Event {
 		this.start = start;
 	}
 
-	public LocalDateTime getFinish() {
-		return finish;
+	public LocalDateTime getEnd() {
+		return end;
 	}
 
-	public void setFinish(LocalDateTime finish) {
-		this.finish = finish;
+	public void setEnd(LocalDateTime end) {
+		this.end = end;
     }
     
     @Override
 	public String toString() {
 		return "Event [id=" + id + ", title=" + title + ", description=" + description + ", start=" + start
-				+ ", finish=" + finish + "]";
+				+ ", end=" + end + "]";
 	} 	
 }
