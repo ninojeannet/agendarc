@@ -69,7 +69,10 @@ public class EventController{
 	
 	@RequestMapping(value = "/event", method=RequestMethod.GET)
 	public String event(@RequestParam("id") Long id, Model model) {
-		model.addAttribute("event", eventRepository.findById(id).get());
+		Event event = eventRepository.findById(id).get();
+		Calendar parentCalendar = event.getCalendar();
+		model.addAttribute("event", event);
+		model.addAttribute("calendar", parentCalendar);
 		return "event";
 	}
 
