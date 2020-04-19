@@ -21,10 +21,12 @@
             <a class="nav-link" th:href="@{/calendars}">Calendars <span class="sr-only">(current)</span></a>
           </li>
         </ul>
-        <span class="navbar-text">
+        <span sec:authorize="isAnonymous()" class="navbar-text">
           <a th:href="@{/login}">Login</a>
         </span>
-
+        <span sec:authorize="isAuthenticated()" class="navbar-text">
+          <a th:href="@{/logout}">Logout</a>
+        </span>
       </div>
     </nav>
     <div th:replace="${content}" class="container">
