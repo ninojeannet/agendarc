@@ -106,5 +106,15 @@ public class Event {
 	public String toString() {
 		return "Event [id=" + id + ", title=" + title + ", description=" + description + ", start=" + start
 				+ ", end=" + end + "]";
-	} 	
+    } 	
+    
+    /**
+     * Returns whether the given user has admin rights.
+     * 
+     * @param user User to test
+     * @return True if the user is the owner of the ToDont
+     */
+    public boolean isCreator(User user) {
+        return user == creator;
+    }
 }
