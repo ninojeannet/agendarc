@@ -1,6 +1,7 @@
 
 <!DOCTYPE html>
 <html th:replace="~{base :: layout( ~{::content})}">
+
 <div th:fragment="content">
 	<h1>Calendriers</h1>
 
@@ -11,7 +12,7 @@
 				class="btn btn-primary" />
 		</div>
 	</form>
-	<p>	<td><a th:href="@{/newCalendar}" >Create new calendar</a></td></p>
+	<p>	<td><a class="btn btn-success" th:href="@{/newCalendar}" >Create new calendar</a></td></p>
 	<div class="card">
 				<div class="card card-body">
 					<table class="table table-hover">
