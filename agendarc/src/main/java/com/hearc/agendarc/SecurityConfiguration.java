@@ -33,6 +33,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		.antMatchers("/newCalendar").authenticated()
 		.antMatchers("/updateCalendar").authenticated()
 		.antMatchers("/updateEvent").authenticated()
+		.antMatchers("/users").authenticated()
         .antMatchers("/h2").permitAll()
         .antMatchers("/add").permitAll()
 		.and()

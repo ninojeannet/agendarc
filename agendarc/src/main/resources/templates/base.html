@@ -23,6 +23,8 @@
         </ul>
 
         <span sec:authorize="isAnonymous()" class="navbar-text">
+          <a style="margin-right:2em;" th:href="@{/register}">Sign up</a>
+
           <a th:href="@{/login}">Login</a>
         </span>
         <span sec:authorize="isAuthenticated()" class="navbar-text">
