@@ -15,3 +15,11 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 
+WebUI.click(findTestObject('page_calendar/link_delete'))
+
+WebUI.setText(findTestObject('page_calendars/input_search_value'), 'monVraiCalendrier')
+
+WebUI.click(findTestObject('page_calendars/btn_search'))
+
+WebUI.verifyTextNotPresent('monVraiCalendrier', false)
+
