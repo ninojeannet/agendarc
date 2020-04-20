@@ -78,6 +78,17 @@ public class Calendar {
         this.users = users;
     }
 
+    
+    /**
+     * Returns whether the given user has admin rights.
+     * 
+     * @param user User to test
+     * @return True if the user is the owner of the ToDont
+     */
+    public boolean isOwner(User user) {
+        return user == owner;
+    }
+
     @Override
     public String toString() {
         return "Calendar [id=" + id + ", name=" + name + ", owner=" + owner + ", users=" + users + "]";
