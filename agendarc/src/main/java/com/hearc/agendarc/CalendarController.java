@@ -2,6 +2,8 @@ package com.hearc.agendarc;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 import com.hearc.agendarc.model.Calendar;
 import com.hearc.agendarc.model.Event;
@@ -15,19 +17,14 @@ import com.hearc.agendarc.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.repository.query.Param;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 
 @Controller
@@ -51,12 +48,12 @@ public class CalendarController{
 	@Autowired
 	RoleRepository roleRepository;
 
-    @RequestMapping(value="/", method=RequestMethod.GET)
+    @GetMapping(value="/")
     public String test() {
         return "home";
     }
     
-    @RequestMapping(value = "/calendars", method=RequestMethod.GET)
+    @GetMapping(value = "/calendars")
 	public String liste(Model model, @RequestParam(defaultValue="")  String name,@RequestParam(defaultValue="0") int page) {
 		Pageable pageable = PageRequest.of(page,2);
 		model.addAttribute("calendars", calendarService.findByNameLikeIgnoreCase(name,pageable));
@@ -75,16 +72,20 @@ public class CalendarController{
 		return "calendars";
 	}
 
-	@RequestMapping(value = "/calendar", method=RequestMethod.GET)
+	@GetMapping(value = "/calendar")
 	public String calendar(@RequestParam("id") Long id, Model model) {
-		Calendar calendar = calendarRepository.findById(id).get();
+		Optional<Calendar> optionalCal = calendarRepository.findById(id);
+		if (!optionalCal.isPresent())
+			throw new NoSuchElementException();
+		Calendar calendar = optionalCal.get();
+		
 		model.addAttribute("calendar", calendar);
 		List<Event> events = eventRepository.findByCalendar(calendar);
 		model.addAttribute("events", events);
 		return "calendar";
 	}
 
-	@RequestMapping("/newCalendar")
+	@GetMapping("/newCalendar")
     public String register(Model model) 
 	{
 		model.addAttribute("calendar", new Calendar());
@@ -118,11 +119,14 @@ public class CalendarController{
 	}
 
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_ADMIN_'.concat(#id))")
-	@RequestMapping(value="/updateCalendar",method=RequestMethod.GET)
+	@GetMapping(value="/updateCalendar")
 	public String update(Model model,@RequestParam("id") Long id)
 	{
-		Calendar c = calendarRepository.findById(id).get();
-		model.addAttribute("calendar", c);
+		Optional<Calendar> optionalCal = calendarRepository.findById(id);
+		if (!optionalCal.isPresent())
+			throw new NoSuchElementException();
+		Calendar calendar = optionalCal.get();
+		model.addAttribute("calendar", calendar);
 		return "updateCalendar";
 	}
 
@@ -135,13 +139,15 @@ public class CalendarController{
 
 	
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_ADMIN_'.concat(#id))")
-	@RequestMapping(value="/deleteCal",method=RequestMethod.GET)
+	@GetMapping(value="/deleteCal")
 	public String deleteEvent(@RequestParam("id") Long id)
 	{
-		
-		Calendar c = calendarRepository.findById(id).get();
+		Optional<Calendar> optionalCal = calendarRepository.findById(id);
+		if (!optionalCal.isPresent())
+			throw new NoSuchElementException();
+		Calendar calendar = optionalCal.get();
 
-		calendarRepository.delete(c);
+		calendarRepository.delete(calendar);
 		return "redirect:/calendars";
 	}
 }

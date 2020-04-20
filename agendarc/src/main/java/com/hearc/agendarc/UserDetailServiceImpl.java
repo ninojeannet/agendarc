@@ -18,9 +18,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.hearc.agendarc.model.Calendar;
 import com.hearc.agendarc.model.Role;
-import com.hearc.agendarc.repository.CalendarRepository;
 import com.hearc.agendarc.repository.UserRepository;
 
 @Service
@@ -29,16 +27,14 @@ public class UserDetailServiceImpl implements UserDetailsService {
   @Autowired
   private UserRepository userRepository;
 
-  @Autowired
-  private CalendarRepository calendarRepository;
   
   @Override
   @Transactional(readOnly = true)
   public UserDetails loadUserByUsername(final String username) throws UsernameNotFoundException 
   {
     
-	com.hearc.agendarc.model.User utilisateur = userRepository.findByUsername(username);
-	System.out.println(utilisateur.getName());
+	  com.hearc.agendarc.model.User utilisateur = userRepository.findByUsername(username);
+	
     if (utilisateur == null)
       throw new UsernameNotFoundException(username);
    
@@ -72,10 +68,6 @@ public class UserDetailServiceImpl implements UserDetailsService {
       SecurityContextHolder.getContext().setAuthentication(newAuth);
   }
 
-  /*public List<Calendar> findByNameLike(String name)
-  {
-  	return calendarRepository.findByNameLike("%"+name+"%");
-  }*/
   
 
 }
