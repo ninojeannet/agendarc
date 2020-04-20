@@ -55,13 +55,13 @@
    <testCaseLink>
       <guid>2178127a-7954-437e-95ad-35aa25a57100</guid>
       <isReuseDriver>false</isReuseDriver>
-      <isRun>false</isRun>
+      <isRun>true</isRun>
       <testCaseId>Test Cases/updateEvent</testCaseId>
    </testCaseLink>
    <testCaseLink>
       <guid>ed0e3cfa-71e1-4f8b-b98e-b972f9ad4f04</guid>
       <isReuseDriver>false</isReuseDriver>
-      <isRun>false</isRun>
+      <isRun>true</isRun>
       <testCaseId>Test Cases/deleteEvent</testCaseId>
    </testCaseLink>
    <testCaseLink>

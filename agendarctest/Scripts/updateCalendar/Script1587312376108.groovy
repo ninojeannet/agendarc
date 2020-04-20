@@ -15,3 +15,13 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 
+WebUI.click(findTestObject('page_calendar/link_update'))
+
+WebUI.setText(findTestObject('page_update_calendar/input_name'), 'monVraiCalendrier')
+
+WebUI.click(findTestObject('page_update_calendar/input_submit'))
+
+WebUI.verifyTextPresent('monVraiCalendrier', false)
+
+WebUI.verifyTextPresent('Created', false)
+
