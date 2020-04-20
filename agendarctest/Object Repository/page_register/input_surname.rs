@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>button_logout</name>
+   <name>input_surname</name>
    <tag></tag>
-   <elementGuidId>7b58cb64-d8e8-4110-b3f9-641226bab31e</elementGuidId>
+   <elementGuidId>7de5ccdf-e684-433c-8e42-949d99181d99</elementGuidId>
    <selectorCollection>
       <entry>
          <key>BASIC</key>
-         <value>//*[@value = 'Logout']</value>
+         <value>//*[@id = 'surname']</value>
       </entry>
    </selectorCollection>
    <selectorMethod>BASIC</selectorMethod>
@@ -15,8 +15,8 @@
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
-      <name>value</name>
+      <name>id</name>
       <type>Main</type>
-      <value>Logout</value>
+      <value>surname</value>
    </webElementProperties>
 </WebElementEntity>

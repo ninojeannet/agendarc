@@ -8,9 +8,9 @@
 
 	<p> Descrption de l'événement :  <span th:text="${event.description}"></span></p>
 	
-	<td><a class="btn btn-primary" th:if="${#authorization.expression('hasRole('''+calendar.roleName+''')')}" th:href="@{/updateEvent} + '?id=' + ${event.id}" >Update</a></td>
+	<td><a class="btn btn-primary" th:if="${#authorization.expression('hasAnyRole('''+calendar.roleName+''','''+'ROLE_ADMIN'+''')')}" th:href="@{/updateEvent} + '?id=' + ${event.id}" >Update</a></td>
 
-	<td><a class="btn btn-danger" th:if="${#authorization.expression('hasRole('''+calendar.roleName+''')')}" th:href="@{/deleteEve} + '?id=' + ${event.id}" >Delete</a></td>
+	<td><a class="btn btn-danger" th:if="${#authorization.expression('hasAnyRole('''+calendar.roleName+''','''+'ROLE_ADMIN'+''')')}" th:href="@{/deleteEve} + '?id=' + ${event.id}" >Delete</a></td>
 
 </div>
 

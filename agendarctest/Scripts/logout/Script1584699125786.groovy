@@ -14,18 +14,9 @@ import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import internal.GlobalVariable as GlobalVariable
 
-WebUI.openBrowser('')
+WebUI.click(findTestObject('navbar/link_logout'))
 
-WebUI.navigateToUrl('http://localhost:9090/login')
-
-WebUI.setText(findTestObject('page_login/input_username'), 'admin')
-
-WebUI.setText(findTestObject('page_login/input_password'), 'password')
-
-WebUI.click(findTestObject('page_login/button_submit'))
-
-WebUI.click(findTestObject('button_logout'))
-
-WebUI.verifyTextPresent('You have been signed out',false)
+WebUI.verifyTextPresent('You have been signed out', false)
 
 WebUI.closeBrowser()
+

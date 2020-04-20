@@ -15,3 +15,11 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 
+WebUI.click(findTestObject('navbar/link_search_users'))
+
+WebUI.setText(findTestObject('page_users/input_user_name'), 'test')
+
+WebUI.click(findTestObject('page_users/input_submit'))
+
+WebUI.verifyTextPresent('test', false)
+

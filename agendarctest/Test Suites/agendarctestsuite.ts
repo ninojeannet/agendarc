@@ -17,6 +17,12 @@
       <testCaseId>Test Cases/website available</testCaseId>
    </testCaseLink>
    <testCaseLink>
+      <guid>10a8ab23-f892-4eab-bb73-a26e8676a305</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/register</testCaseId>
+   </testCaseLink>
+   <testCaseLink>
       <guid>df1b9f06-659e-4729-8524-8238177911ee</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
@@ -67,25 +73,31 @@
    <testCaseLink>
       <guid>a8084704-4964-4d9c-bd21-4e036f2ebbbc</guid>
       <isReuseDriver>false</isReuseDriver>
-      <isRun>false</isRun>
+      <isRun>true</isRun>
       <testCaseId>Test Cases/updateCalendar</testCaseId>
    </testCaseLink>
    <testCaseLink>
       <guid>141361b8-196d-4777-96e9-947e96656240</guid>
       <isReuseDriver>false</isReuseDriver>
-      <isRun>false</isRun>
+      <isRun>true</isRun>
       <testCaseId>Test Cases/deleteCalendar</testCaseId>
    </testCaseLink>
    <testCaseLink>
       <guid>dc14b219-3e2e-4065-81f0-e4f35bc67439</guid>
       <isReuseDriver>false</isReuseDriver>
-      <isRun>false</isRun>
+      <isRun>true</isRun>
       <testCaseId>Test Cases/searchUser</testCaseId>
    </testCaseLink>
    <testCaseLink>
       <guid>252a349a-cf69-4f27-adb3-4e2ca8473a93</guid>
       <isReuseDriver>false</isReuseDriver>
-      <isRun>false</isRun>
+      <isRun>true</isRun>
       <testCaseId>Test Cases/displayProfile</testCaseId>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>aae4cf21-acb8-4f49-8ee0-96d3756b6562</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/logout</testCaseId>
    </testCaseLink>
 </TestSuiteEntity>
