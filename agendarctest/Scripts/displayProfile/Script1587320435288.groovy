@@ -15,13 +15,3 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 
-WebUI.click(findTestObject('page_event/link_update'))
-
-WebUI.setText(findTestObject('page_create_event/input_name'), 'Examen oral')
-
-WebUI.click(findTestObject('page_create_event/input_submit'))
-
-WebUI.verifyTextPresent('Created', false)
-
-WebUI.verifyTextPresent('Examen oral', false)
-

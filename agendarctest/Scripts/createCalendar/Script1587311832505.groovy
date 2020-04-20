@@ -15,19 +15,11 @@ import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 import static com.kms.katalon.core.testobject.ObjectRepository.findWindowsObject
 
-WebUI.openBrowser('')
-
 WebUI.navigateToUrl('http://localhost:9090/newCalendar')
-
-WebUI.setText(findTestObject('page_login/input_username'), 'admin')
-
-WebUI.setText(findTestObject('page_login/input_password'), 'password')
-
-WebUI.click(findTestObject('page_login/button_submit'))
 
 WebUI.setText(findTestObject('page_create_calendar/input_name'), 'monCalendrier')
 
 WebUI.click(findTestObject('page_create_calendar/btn_submit'))
 
-WebUI.verifyTextPresent('Bienvenue', false)
+WebUI.verifyTextPresent('Calendriers', false)
 

@@ -24,7 +24,5 @@ WebUI.setText(findTestObject('page_login/input_password'), 'password')
 
 WebUI.click(findTestObject('page_login/button_submit'))
 
-WebUI.verifyElementPresent(findTestObject('button_logout'), 0)
-
-WebUI.closeBrowser()
+WebUI.verifyTextPresent('Bienvenue', false)
 
