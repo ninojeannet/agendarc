@@ -55,7 +55,7 @@ public class CalendarController{
     
     @RequestMapping(value = "/calendars", method=RequestMethod.GET)
 	public String liste(Model model, @RequestParam(defaultValue="")  String name,@RequestParam(defaultValue="0") int page) {
-		Pageable pageable = PageRequest.of(page,1);
+		Pageable pageable = PageRequest.of(page,2);
 		model.addAttribute("calendars", calendarService.findByNameLikeIgnoreCase(name,pageable));
 		if(calendarService.findByNameLikeIgnoreCase(name,pageable).getTotalPages()<1)
 		{
