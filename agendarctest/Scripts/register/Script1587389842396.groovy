@@ -12,15 +12,20 @@ import com.kms.katalon.core.testdata.TestData as TestData
 import com.kms.katalon.core.testobject.TestObject as TestObject
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 
-WebUI.navigateToUrl('http://localhost:9090/login')
+WebUI.openBrowser('')
 
-WebUI.setText(findTestObject('page_login/input_username'), 'test')
+WebUI.navigateToUrl('http://localhost:9090/register')
 
-WebUI.setText(findTestObject('page_login/input_password'), 'test')
+WebUI.setText(findTestObject('page_register/input_surname'), 'test')
 
-WebUI.click(findTestObject('page_login/button_submit'))
+WebUI.setText(findTestObject('page_register/input_name'), 'test')
 
-WebUI.verifyTextPresent('Bienvenue', false)
+WebUI.setText(findTestObject('page_register/input_username'), 'test')
+
+WebUI.setText(findTestObject('page_register/input_password'), 'test')
+
+WebUI.click(findTestObject('page_register/input_submit'), FailureHandling.STOP_ON_FAILURE)
 
