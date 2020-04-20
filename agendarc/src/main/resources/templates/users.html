@@ -1,4 +1,5 @@
-
+<html th:replace="~{base :: layout( ~{::content})}">
+<div th:fragment="content">
 <form action="/users" class="form-inline">
 	<div class="form-group mb-2">
 		<input type="text" class="form-control" name="username"
@@ -28,3 +29,4 @@
 				</table>
 			</div>
 		</div>
+</div>

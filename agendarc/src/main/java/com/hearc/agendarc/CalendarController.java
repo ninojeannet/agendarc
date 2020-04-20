@@ -126,7 +126,7 @@ public class CalendarController{
 	public String updateCalendar(@ModelAttribute ("calendar") Calendar calendar) {
 
 	calendarRepository.save(calendar);
-	return "redirect:/calendars";
+	return "redirect:/calendar?id="+calendar.getId();
 	}
 
 	
