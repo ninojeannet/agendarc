@@ -20,13 +20,17 @@ WebUI.verifyTextPresent('Création', false)
 
 WebUI.setText(findTestObject('page_create_event/input_name'), 'Examen')
 
-WebUI.executeJavaScript('document.getElementById(\'dateStart\').value=\'2020-04-27\';', [])
+WebUI.executeJavaScript('document.getElementById(\'dateStart\').value=\'2020-04-27\'; document.getElementById(\'dateStart\').dispatchEvent(new Event(\'change\'));', 
+    [])
 
-WebUI.setText(findTestObject('page_create_event/input_start_time'), '10:00')
+WebUI.executeJavaScript('document.getElementById(\'timeStart\').value=\'10:00\'; document.getElementById(\'timeStart\').dispatchEvent(new Event(\'change\'));', 
+    [])
 
-WebUI.setText(findTestObject('page_create_event/input_end_date'), '2020-04-27')
+WebUI.executeJavaScript('document.getElementById(\'dateFinish\').value=\'2020-04-27\'; document.getElementById(\'dateFinish\').dispatchEvent(new Event(\'change\'));', 
+    [])
 
-WebUI.setText(findTestObject('page_create_event/input_end_time'), '12:00')
+WebUI.executeJavaScript('document.getElementById(\'timeFinish\').value=\'12:00\'; document.getElementById(\'timeFinish\').dispatchEvent(new Event(\'change\'));', 
+    [])
 
 WebUI.setText(findTestObject('page_create_event/input_description'), 'Examen de traitement d\'images')
 
