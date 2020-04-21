@@ -2,6 +2,8 @@ package com.hearc.agendarc;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.ArrayList;
+
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
@@ -81,6 +83,23 @@ public class CalendarController{
 		
 		model.addAttribute("calendar", calendar);
 		List<Event> events = eventRepository.findByCalendar(calendar);
+		model.addAttribute("events", events);
+		return "calendar";
+	}
+
+	@GetMapping(value = "/mixedcalendar")
+	public String mixedcalendar(Model model, Principal principal) {
+		User user = userRepository.findByUsername(principal.getName());
+		List<Calendar> calendars = calendarRepository.findByOwner(user);
+
+		Calendar calendar = calendars.get(0);
+		calendar.setName("Mixed calendar");
+		
+		model.addAttribute("calendar", calendar);
+		List<Event> events = new ArrayList<Event>();
+		for (Calendar cal : calendars) {
+			events.addAll(eventRepository.findByCalendar(cal));
+		} 
 		model.addAttribute("events", events);
 		return "calendar";
 	}
