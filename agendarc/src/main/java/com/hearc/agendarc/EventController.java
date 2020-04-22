@@ -2,6 +2,8 @@ package com.hearc.agendarc;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 import com.hearc.agendarc.model.Calendar;
 import com.hearc.agendarc.model.Event;
@@ -13,12 +15,9 @@ import com.hearc.agendarc.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
@@ -35,13 +34,13 @@ public class EventController{
 	CalendarRepository calendarRepository;
 
     
-    @RequestMapping(value = "/events", method=RequestMethod.GET)
+    @GetMapping(value = "/events")
 	public String liste(Model model) {
 		model.addAttribute("events", eventRepository.findAll());
 		return "events";
 	}
  
-	@RequestMapping("/createEvent")
+	@GetMapping("/createEvent")
     public String create(Model model, Principal principal) 
 	{
 		model.addAttribute("event", new Event());
@@ -59,7 +58,11 @@ public class EventController{
 	public String save(@ModelAttribute ("event") Event event,@ModelAttribute ("selectedcalendar") Calendar selectedcalendar, Principal principal) {
 		User user = userRepository.findByUsername(principal.getName());
 		event.setCreator(user);
-		Calendar calendar = calendarRepository.findById(selectedcalendar.getId()).get();
+
+		Optional<Calendar> optionalCal = calendarRepository.findById(selectedcalendar.getId());
+		if (!optionalCal.isPresent())
+			throw new NoSuchElementException();
+		Calendar calendar = optionalCal.get();
 		event.setCalendar(calendar);
 		event.setId(null);
 		
@@ -69,31 +72,39 @@ public class EventController{
 	}
 
 	
-	@RequestMapping(value = "/event", method=RequestMethod.GET)
+	@GetMapping(value = "/event")
 	public String event(@RequestParam("id") Long id, Model model) {
-		Event event = eventRepository.findById(id).get();
+		Optional<Event> optionalEvent = eventRepository.findById(id);
+		if (!optionalEvent.isPresent())
+			throw new NoSuchElementException();
+		Event event = optionalEvent.get();
 		Calendar parentCalendar = event.getCalendar();
 		model.addAttribute("event", event);
 		model.addAttribute("calendar", parentCalendar);
 		return "event";
 	}
 
-	@RequestMapping(value="/deleteEve",method=RequestMethod.GET)
+	@GetMapping(value="/deleteEve")
 	public String deleteEvent(@RequestParam("id") Long id)
 	{
-		
-		Event e = eventRepository.findById(id).get();
-		Long idCal=e.getCalendar().getId();
+		Optional<Event> optionalEvent = eventRepository.findById(id);
+		if (!optionalEvent.isPresent())
+			throw new NoSuchElementException();
+		Event event = optionalEvent.get();
+		Long idCal=event.getCalendar().getId();
 
-		eventRepository.delete(e);
+		eventRepository.delete(event);
 		return "redirect:/calendar?id="+idCal;
 	}
 
-	@RequestMapping(value="/updateEvent",method=RequestMethod.GET)
+	@GetMapping(value="/updateEvent")
 	public String update(Model model,@RequestParam("id") Long id)
 	{
-		Event e = eventRepository.findById(id).get();
-		model.addAttribute("event", e);
+		Optional<Event> optionalEvent = eventRepository.findById(id);
+		if (!optionalEvent.isPresent())
+			throw new NoSuchElementException();
+		Event event = optionalEvent.get();
+		model.addAttribute("event", event);
 		return "updateEvent";
 	}
 

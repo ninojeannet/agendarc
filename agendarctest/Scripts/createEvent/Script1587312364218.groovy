@@ -7,7 +7,6 @@ import com.kms.katalon.core.testdata.TestData as TestData
 import com.kms.katalon.core.testobject.TestObject as TestObject
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
-import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
 import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
@@ -21,13 +20,17 @@ WebUI.verifyTextPresent('Création', false)
 
 WebUI.setText(findTestObject('page_create_event/input_name'), 'Examen')
 
-WebUI.setText(findTestObject('page_create_event/input_start_date'), '2020-04-27')
+WebUI.executeJavaScript('document.getElementById(\'dateStart\').value=\'2020-04-27\'; document.getElementById(\'dateStart\').dispatchEvent(new Event(\'change\'));', 
+    [])
 
-WebUI.setText(findTestObject('page_create_event/input_start_time'), '10:00')
+WebUI.executeJavaScript('document.getElementById(\'timeStart\').value=\'10:00\'; document.getElementById(\'timeStart\').dispatchEvent(new Event(\'change\'));', 
+    [])
 
-WebUI.setText(findTestObject('page_create_event/input_end_date'), '2020-04-27')
+WebUI.executeJavaScript('document.getElementById(\'dateFinish\').value=\'2020-04-27\'; document.getElementById(\'dateFinish\').dispatchEvent(new Event(\'change\'));', 
+    [])
 
-WebUI.setText(findTestObject('page_create_event/input_end_time'), '12:00')
+WebUI.executeJavaScript('document.getElementById(\'timeFinish\').value=\'12:00\'; document.getElementById(\'timeFinish\').dispatchEvent(new Event(\'change\'));', 
+    [])
 
 WebUI.setText(findTestObject('page_create_event/input_description'), 'Examen de traitement d\'images')
 

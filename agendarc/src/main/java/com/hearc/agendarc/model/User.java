@@ -11,7 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import org.springframework.lang.NonNull;
 
 @Entity
 @Table(name = "user")
@@ -20,19 +19,15 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @NonNull
     @Column(name="name")
     private String name;
     
-    @NonNull
     @Column(name="surname")
     private String surname;
     
-    @NonNull
     @Column(name="username")
     private String username;
     
-    @NonNull
     @Column(name="pwd")
     private String pwd;
 
@@ -98,6 +93,7 @@ public class User {
 
 	public User() {
 		super();
+
 		this.roles = new HashSet<Role>();
 		
 	}

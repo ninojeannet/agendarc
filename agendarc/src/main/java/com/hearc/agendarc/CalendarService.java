@@ -1,7 +1,5 @@
 package com.hearc.agendarc;
 
-import java.util.List;
-
 import com.hearc.agendarc.model.Calendar;
 import com.hearc.agendarc.repository.CalendarRepository;
 

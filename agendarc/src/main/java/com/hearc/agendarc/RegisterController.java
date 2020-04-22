@@ -4,9 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.hearc.agendarc.model.User;
 import com.hearc.agendarc.repository.RoleRepository;
@@ -26,7 +26,7 @@ public class RegisterController {
 	@Autowired
 	BCryptPasswordEncoder bCryptPasswordEncoder;
 	
-    @RequestMapping("/register")
+    @GetMapping("/register")
     public String register(Model model) 
 	{
 		model.addAttribute("user", new User());
@@ -38,18 +38,8 @@ public class RegisterController {
     
 	@PostMapping("/add")
 	public String add(@ModelAttribute ("user") User user) {
-
-		System.out.println(user.getPwd());
-
-
 		user.setPwd((bCryptPasswordEncoder.encode(user.getPwd())));
-		System.out.println(user.getName());
-		System.out.println(user.getSurname());
-		System.out.println(user.getPwd());
-		System.out.println(user.getUsername());
-
 		userRepo.save(user);
-
 			
 		return "redirect:/login";
 
