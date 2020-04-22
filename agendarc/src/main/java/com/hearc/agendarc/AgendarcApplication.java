@@ -57,9 +57,9 @@ public class AgendarcApplication {
 		u.setUsername("admin");
 		u.setPwd(bCryptPasswordEncoder.encode("password"));
 		
-        u2.setName("Prêtre");
-        u2.setSurname("Denis");
-        u2.setUsername("denisdenis");
+        u2.setName("HE");
+        u2.setSurname("Arc");
+        u2.setUsername("hearc");
         u2.setPwd(bCryptPasswordEncoder.encode("password"));
 		
 
